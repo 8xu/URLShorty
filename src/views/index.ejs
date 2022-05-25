@@ -9,11 +9,15 @@
 			rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		/>
-		<title>URL Shortner</title>
+		<title>URL Shorty</title>
 	</head>
 	<body>
 		<div class="container">
-			<h1>URL Shortner</h1>
+			<div id="header" class="text-center">
+				<h1>URLShorty</h1>
+				<p>Ever wanted shorter URLs? We got you! 🤛🏽</p>	
+			</div>
+
 			<form action="/shorten" method="POST" class="my-4 form-inline">
 				<label for="url" class="sr-only">URL</label>
 				<input
@@ -27,13 +31,13 @@
 				<button 
 					class="btn btn-success" type="submit">shorten it!</button>
 			</form>
-			<p>Total shortened: <%= total %></p>
-			<table class="d-flex flex-column align-items-center table table-striped table-responsive">
+			<p class="text-center">Total shortened: <%= total %></p>
+			<table class="table-hover table table-striped table-responsive">
 				<thead>
 					<tr>
-						<th>Full URL</th>
-						<th>Short URL</th>
-						<th>Clicks</th>
+						<th scope="col">Full URL</th>
+						<th scope="col">Short URL</th>
+						<th scope="col">Clicks</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,6 +50,10 @@
 					<% }) %>
 				</tbody>
 			</table>
+
+			<footer class="fixed-bottom d-flex justify-content-center bg-info">
+				<p class="text-md-center p-2">This project is open source and available <a href="https://github.com/8xu/URLShorty" target="_blank" class="text-danger font-italic">here</a></p>
+			</footer>
 		</div>
 	</body>
 </html>
