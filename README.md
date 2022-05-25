@@ -1,7 +1,8 @@
 # URLShorty 🔗
 Simple Node.JS URL shortener using Express, Mongoose and EJS.
 
-## [Live Demo](https://urlshorty.7b.repl.co/) 🚀
+## [Demo](https://urlshorty.7b.repl.co/) 🚀
+> Proudly hosted on [Replit](https://repl.it/)! ❤️
 
 *Contributions and bug reports are welcome!* 😃
 > I need a lot of help with this project, first of all, I need to make a VueJS frontend. If you have any ideas, please let me know! ✨
