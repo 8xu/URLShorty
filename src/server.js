@@ -8,8 +8,6 @@ require('dotenv').config();
 
 const app = express();
 
-connectDB();
-
 app.use(express.json());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -69,6 +67,7 @@ app.get('/:shortUrl', async (req, res) => {
 });
 
 let PORT = process.env.PORT || 3500;
-app.listen(PORT, () => {
-    logger.event(`Server is running on ${PORT}.`)
+app.listen(PORT, async () => {
+    await connectDB();
+    logger.event(`Server is running on ${PORT}.`);
 });
