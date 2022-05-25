@@ -8,8 +8,6 @@ require('dotenv').config();
 
 const app = express();
 
-connectDB();
-
 app.use(express.json());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -24,8 +22,6 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/shorten', async (req, res) => {
-    console.log(req.body);
-
     if (!req.body.url) {
         res.status(400).send('Please provide a URL.');
     } else {
@@ -44,17 +40,6 @@ app.post('/shorten', async (req, res) => {
     }
 });
 
-app.delete('/', async (req, res) => {
-    try {
-        await Url.deleteMany();
-        logger.event('All URLs deleted.');
-        res.status(200).redirect('/');
-    } catch (error) {
-        logger.error(`Error deleting all URLs: ${error}`);
-        res.redirect('/');
-    }
-});
-
 app.get('/:shortUrl', async (req, res) => {
     const shortUrl = req.params.shortUrl;
 
@@ -69,6 +54,7 @@ app.get('/:shortUrl', async (req, res) => {
 });
 
 let PORT = process.env.PORT || 3500;
-app.listen(PORT, () => {
-    logger.event(`Server is running on ${PORT}.`)
+app.listen(PORT, async () => {
+    await connectDB();
+    logger.event(`Server is running on ${PORT}.`);
 });
