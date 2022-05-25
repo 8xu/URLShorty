@@ -22,8 +22,6 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/shorten', async (req, res) => {
-    console.log(req.body);
-
     if (!req.body.url) {
         res.status(400).send('Please provide a URL.');
     } else {
