@@ -42,17 +42,6 @@ app.post('/shorten', async (req, res) => {
     }
 });
 
-app.delete('/', async (req, res) => {
-    try {
-        await Url.deleteMany();
-        logger.event('All URLs deleted.');
-        res.status(200).redirect('/');
-    } catch (error) {
-        logger.error(`Error deleting all URLs: ${error}`);
-        res.redirect('/');
-    }
-});
-
 app.get('/:shortUrl', async (req, res) => {
     const shortUrl = req.params.shortUrl;
 
