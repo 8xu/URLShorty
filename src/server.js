@@ -14,10 +14,14 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/', async (req, res) => {
-    let allData = await Url.find();
+    let [shortUrls, total] = await Promise.all([
+        Url.find(),
+        Url.countDocuments()
+    ]) 
+
     res.render('index', {
-        shortUrls: allData,
-        total: await Url.countDocuments()
+        shortUrls,
+        total
     });
 });
 
