@@ -22,12 +22,13 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/shorten', async (req, res) => {
-    if (!req.body.url) {
+    const URL = req.body.url;
+    if (!URL) {
         res.status(400).send('Please provide a URL.');
     } else {
         try {
             const record = new Url({
-                originalUrl: req.body.url,
+                originalUrl: URL,
                 shortUrl: id.generate()
             });
             await record.save();
