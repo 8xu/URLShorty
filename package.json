@@ -9,5 +9,6 @@
   },
   "scripts": {
     "dev": "cls || clear && nodemon -e js,ejs src/server.js"
-  }
+  },
+  "main": "src/server.js"
 }
