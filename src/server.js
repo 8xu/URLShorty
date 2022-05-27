@@ -9,7 +9,8 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
-app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/frontend'))
+app.set('views', __dirname + '/frontend');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }))
 

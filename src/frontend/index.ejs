@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<title>URLShorty</title>
+
+	<!-- Primary Meta Tags -->
+	<title>URLShorty</title>
+	<meta name="title" content="URLShorty">
+	<meta name="description" content="Shorten your long URLs simple and fast! 🚀">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="URLShorty">
+	<meta property="og:description" content="Shorten your long URLs simple and fast! 🚀">
+
+	<!-- Twitter -->
+	<meta property="twitter:title" content="URLShorty">
+	<meta property="twitter:description" content="Shorten your long URLs simple and fast! 🚀">
+</head>
+<body>
+	<footer>
+		<p><b>COMING SOON! PERSONALIZED URLs. DM DEV TO GET ONE</b></p>
+		<p>This project is open source and available <a href="https://github.com/8xu/URLShorty">here</a>.</p>
+	</footer>
+
+	<main>
+		<header>
+			<h1>URLShorty</h1>
+			<p>Ever wanted shorter URLs? We got you! 🤛🏽</p>
+		</header>
+
+		<form action="/shorten" method="POST">
+			<p>Total shortened <b><%= total %></b></p>
+			<input
+				required
+				placeholder="URL"
+				type="url"
+				name="url"
+			/>
+
+			<button type="submit">shorten it!</button>
+		</form>
+
+		<div class="table-container" style="overflow: auto;">
+			<table>
+				<thead>
+					<tr>
+						<th>Original URL</th>
+						<th>Short URL</th>
+						<th>Clicks</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% shortUrls.forEach(shortUrl => { %>
+					<tr>
+						<td><a href="<%= shortUrl.originalUrl %>" target="_blank"><%= shortUrl.originalUrl %></a></td>
+						<td><a href="<%= shortUrl.shortUrl %>" target="_blank"><%= shortUrl.shortUrl %></a></td>
+						<td><%= shortUrl.clicks %></td>
+					</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+</html>
