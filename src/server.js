@@ -42,7 +42,10 @@ app.post('/shorten', async (req, res) => {
             await record.save();
 
             logger.event(`New URL shortened: ${record.originalUrl} > ${record.shortUrl}`);
-            return res.status(201).send('URL shortened successfully.');
+            return res.status(201).send({
+                shortUrl: record.shortUrl,
+                message: 'URL shortened successfully.'
+            });
         } catch (error) {
             logger.error(error);
         }
