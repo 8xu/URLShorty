@@ -28,6 +28,9 @@ app.get('/', async (req, res) => {
 
 app.post('/shorten', async (req, res) => {
     const URL = req.body.url;
+    if (!URL.startsWith('http://') && !URL.startsWith('https://')) {
+        return res.status(400).send('Invalid URL. Make sure it starts with http:// or https://');
+    }
     if (!URL) {
         res.status(400).send('Please provide a URL.');
     } else {
@@ -39,9 +42,9 @@ app.post('/shorten', async (req, res) => {
             await record.save();
 
             logger.event(`New URL shortened: ${record.originalUrl} > ${record.shortUrl}`);
-            res.status(201).redirect('/');
+            return res.status(201).send('URL shortened successfully.');
         } catch (error) {
-            res.redirect('/');
+            logger.error(error);
         }
     }
 });
