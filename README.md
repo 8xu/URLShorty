@@ -1,7 +1,8 @@
 # URLShorty 🔗
 Simple Node.JS URL shortener using Express, Mongoose and EJS.
 
-## [Live Demo](https://perfect-bat-jersey.cyclic.app/) 🚀
+## [CLI](https://github.com/8xu/URLShortyCLI)
+## [Live Demo](https://url.cyclic.app/) 🚀
 > Proudly hosted on [Cyclic](https://www.cyclic.sh/)! ❤️
 
 *Contributions and bug reports are welcome!* 😃
